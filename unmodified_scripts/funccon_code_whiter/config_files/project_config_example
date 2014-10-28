@@ -1,0 +1,75 @@
+[readme]
+# Information regtarding this specific config file
+notes = Task: rest   Atlas: dosenbach_all   Subblocks: 1   Date Created: 6-30-14 
+
+[project_params]
+project = task_graphtheory
+atlas = dosenbach_all
+homedir = /home/despo/task_graphtheory/
+params_file = /home/despo/jrcohen/gitrepos/podNtools/funccon_code/params_files/funccon_params_task_graphtheory_restA.csv
+
+# USE double QUOTES for strings so JSON parses properly!!
+##########################################################
+[defaults]
+# Upper and lower bandpass filters
+filt: [0.0009,0.08]
+# Full-width half-maximum for smoothing
+fwhm = 6
+# Whether or not to do global signal regression
+GSR = False
+# Minimum proportion of voxels in masked ROI as compared to unmasked ROI
+maskedroi_prop = 0.25 
+# Minimum distance for connections (load a mask that zeros out all connections shorter than mindist)
+mindist = 20 
+
+[maindirectories]
+### Base is homedir; do not begin with '/' or os.path.join won't work
+# Individual subject data
+datadir = data/
+# Output analyses
+analdir = analyses/04_rest_corr_Hallquist_06-30-14/
+### Sub-directories within analdir
+# Atlas-specific correlation directory
+corrdir = corr_dosenbach_all/
+# Directory for roi2roi correlation matrices
+roi2roidir = roi2roi/
+# Directory for full timeseries for all ROIs
+timesdir = timeseries/
+# Directory for anatomical distance masks (absolute path since study-specific)
+anatomdist_dir = /home/despo/task_graphtheory/analyses/04_rest_corr_Hallquist_06-30-14/corr_dosenbach_all/roi2roi/anatomdist_masks/
+
+[maskinfo]
+### Base is homedir; do not begin with '/' or os.path.join won't work; make sure atlas, mindist, and norm are correct in variables that use those
+### Note that empty variables are OK and equivalent to empty strings
+# Nuisance mask directory
+nuisdir = masks/nuisance/
+# Directory for ROIs of interest
+maskdir = masks/native_dosenbach_all/
+# Directory for ROIs of interest, masked by each subject brain mask
+maskdir_masked = masks/native_dosenbach_all/masked/
+# rstr is specific to atlas used, and is the prefix of each numbered ROI 
+rstr = %03d 
+# Suffix of unmasked ROI file
+roifile_suffix = r.nii
+# Suffix of masked ROI file
+roifile_masked_suffix = Ar.nii
+### Nuisance regressors
+# pre- and post- surround block number for motion regressors
+mot_roi_name_pre = dfile.r
+mot_roi_name_post = .1D
+# This dictates potential zero-padding of block
+mot_roi_name_blockstr = %02d
+# pre- and post- surround sub number for all other regressors, that are not block-specific
+white_roi_name_pre = white_
+white_roi_name_post = .nii
+ventricles_roi_name_pre = ventricles_
+ventricles_roi_name_post = .nii
+gsr_roi_name_pre = 
+gsr_roi_name_post = -Mask-ALLSESSRUNS.nii
+anatomdist_fname_pre = 
+anatomdist_fname_post = _dosenbach_all_mindist20.txt
+
+[subjectinfo]
+subjects: ["301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","334","335"]
+# Here can define if only want to use a subset of characters of the subject number (used for naming some files, i.e., s2=s[:3])
+sub2: "s2 = s" 

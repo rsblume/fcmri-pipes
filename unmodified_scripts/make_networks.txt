@@ -1,0 +1,14 @@
+3dcalc -a dosenbach_01.nii -b dosenbach_02.nii -c dosenbach_03.nii -d \
+ dosenbach_04.nii -e dosenbach_05.nii -f dosenbach_06.nii -g \
+ dosenbach_07.nii -expr 'a+b+c+d+e+f+g' -prefix core.nii; \
+3dcalc -a dosenbach_08.nii -b dosenbach_09.nii -c dosenbach_10.nii -d dosenbach_11.nii \
+-e dosenbach_12.nii -f dosenbach_13.nii -g dosenbach_14.nii -h dosenbach_15.nii \
+-i dosenbach_16.nii -j dosenbach_17.nii -k dosenbach_18.nii -expr \
+ 'a+b+c+d+e+f+g+h+i+j+k'  -prefix FP.nii; \
+\
+3dcalc -a dosenbach_21.nii -b dosenbach_22.nii -c dosenbach_23.nii -d
+ dosenbach_24.nii -e dosenbach_25.nii -f dosenbach_26.nii -g dosenbach_27.nii -h dosenbach_28.nii -i dosenbach_29.nii -j dosenbach_30.nii -expr 'a+b+c+d+e+f+g+h+i+j' -prefix visual.nii
+
+
+
+#try again

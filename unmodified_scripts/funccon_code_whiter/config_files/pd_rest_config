@@ -1,0 +1,77 @@
+[readme]
+# Information regtarding this specific config file
+notes = Task: rest   Atlas: aal   Subblocks: 1   Date Created: 9-03-14 
+
+[project_params]
+project = rest.pd
+atlas = aal
+homedir = /home/despo//pdwm/Rest/
+params_file = /home/despo/whiter/gitrepos/podNtools/funccon_code/params_files/funccon_params_rest.pd.csv
+
+# USE double QUOTES for strings so JSON parses properly!!
+##########################################################
+[defaults]
+# Upper and lower bandpass filters
+filt: [0.0009,0.08]
+# Full-width half-maximum for smoothing
+fwhm = 6
+# Whether or not to do global signal regression
+GSR = False
+# Minimum proportion of voxels in masked ROI as compared to unmasked ROI
+maskedroi_prop = 0.25 
+# Minimum distance for connections (load a mask that zeros out all connections shorter than mindist)
+mindist = 20 
+
+[maindirectories]
+### Base is homedir; do not begin with '/' or os.path.join won't work
+# Individual subject data
+datadir = Data/
+# Output analyses
+analdir = analyses/corr_Hallquist/
+### Sub-directories within analdir
+# Atlas-specific correlation directory
+corrdir = corr_aal/
+# Directory for roi2roi correlation matrices
+roi2roidir = roi2roi/
+# Directory for full timeseries for all ROIs
+timesdir = timeseries/
+# Directory for anatomical distance masks (absolute path since study-specific) ## RW hasn't used these yet...
+anatomdist_dir = /home/despo/pdwm/Rest/Study_pd/corr_aal/ 
+
+[maskinfo]
+### Base is homedir; do not begin with '/' or os.path.join won't work; make sure atlas, mindist, and norm are correct in variables that use those
+### Note that empty variables are OK and equivalent to empty strings
+# Nuisance mask directory
+nuisdir = Data/Masks/nuisance/
+# Directory for ROIs of interest
+maskdir = Data/Masks/native_aal/
+# Directory for ROIs of interest, masked by each subject brain mask
+maskdir_masked = Data/Masks/native_aal/masked/
+# rstr is specific to atlas used, and is the prefix of each numbered ROI 
+rstr = %03d 
+# Suffix of unmasked ROI file
+roifile_suffix = r.nii.gz
+# Suffix of masked ROI file
+roifile_masked_suffix = .nii.gz
+### Nuisance regressors
+# pre- and post- surround block number for motion regressors
+mot_roi_name_pre = dfile.r
+mot_roi_name_post = .1D
+# This dictates potential zero-padding of block
+mot_roi_name_blockstr = %02d
+# pre- and post- surround sub number for all other regressors, that are not block-specific
+white_roi_name_pre = white_
+white_roi_name_post = .nii.gz
+ventricles_roi_name_pre = ventricles_
+ventricles_roi_name_post = .nii.gz
+gsr_roi_name_pre = 
+gsr_roi_name_post = -Mask.nii
+anatomdist_fname_pre = 
+anatomdist_fname_post = _aal_mindist20.txt
+
+[subjectinfo]
+subjects: ["102","103","104","105","106","107","108","109","110","111","112","113","114","115"]
+#subjects: ["3011","3012","3021","3022","3031","3032","3041","3042","3051","3052","3081","3082","3101","3102","3111","3112","3121","3122","3131","3132","3141","3142","3151","3152","3171","3172","3201","3202","3211","3212","3241","3242","3251","3252","3261","3262","3271","3272","3291","3292","3311","3312","3321","3322","3331","3332","3341","3342","3361","3362","3371","3372","3381","3382"]
+subjects: [102]
+# Here can define if only want to use a subset of characters of the subject number (used for naming some files, i.e., s2=s[:3])
+sub2: "s2 = s" 
